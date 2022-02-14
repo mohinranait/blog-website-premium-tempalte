@@ -1,0 +1,13 @@
+.details-header h1{
+    font-size: 30px;
+}
+.details-header .autho{
+    margin-top: 20px;
+}
+.border{
+    border: 1px solid rgb(243, 243, 243);
+}
+.autho div p.auth-name{
+    margin-bottom: 0;
+    color: black;
+}
