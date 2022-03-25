@@ -16,7 +16,11 @@ class frontPageController extends Controller
      */
     public function home()
     {
-        return view('frontend.pages.home');
+        $posts = Post::orderby('created_at','desc')->limit(10)->get();
+        $onepost = $posts->splice(0, 1);
+        $sidepost = $posts->splice(0, 7);
+        
+        return view('frontend.pages.home',compact('onepost','sidepost','posts'));
     }
 
     // Details posts

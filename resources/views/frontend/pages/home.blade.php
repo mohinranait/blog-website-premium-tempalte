@@ -16,7 +16,7 @@
                 <div class="row gy-4">
                     <div class="col-lg-8">
 
-                        @foreach(App\Models\Post::where('status',1)->latest()->limit(1)->get() as $fiturePost)
+                        @foreach($onepost as $fiturePost)
                         <div class="post featured-post-lg">
                             <div class="details clearfix">
                                 <a href="#" class="category-badge">{{$fiturePost->category->name}}</a>
@@ -27,7 +27,7 @@
                                     <li class="list-inline-item">
                                         <a href="#">Author : {{$fiturePost->userInfo->name}}</a>
                                     </li>
-                                    <li class="list-inline-item">Date : {{ substr(strip_tags($fiturePost->created_at) , 0 , 10) }}</li>
+                                    <li class="list-inline-item">Date : {{ $fiturePost->created_at->format('M d , Y') }}</li>
                                 </ul>
                             </div>
                             <a href="#">
@@ -63,7 +63,7 @@
                             <div class="row gy-5">
                                 <div class="col-sm-6">
                                     <!-- post  -->
-                                    @foreach(App\Models\Post::latest()->limit(1)->get() as $postOne)
+                                    @foreach($onepost as $postOne)
                                     <div class="post">
                                         <div class="thumb rounded">
                                             <a href="#" class="category-badge position-absolute">{{$postOne->category->name}}</a>
@@ -83,7 +83,7 @@
                                                     {{$postOne->userInfo->name}}
                                                 </a>
                                             </li>
-                                            <li class="list-inline-item">{{ substr(strip_tags($postOne->created_at),0,10) }}</li>
+                                            <li class="list-inline-item">{{ $postOne->created_at->format('M d, Y') }}</li>
                                         </ul>
                                         <h5 class="post-title mb-3 mt-3">
                                             <a href="{{route('detailspost', $postOne->slug)}}">{{$postOne->name}}</a>
@@ -96,7 +96,7 @@
                                     @endforeach
                                 </div>
                                 <div class="col-sm-6">
-                                    @foreach( App\Models\Post::where('status',1)->latest()->limit(4)->get() as $postFore )
+                                    @foreach( $sidepost as $postFore )
                                     <div class="post post-list-sm square">
                                         <div class="thumb rounded">
                                             <a href="{{route('detailspost', $postFore->slug)}}">
@@ -112,7 +112,7 @@
                                                 </a>
                                             </h6>
                                             <ul class="meta list-inline mt-1 mb-0">
-                                                <li class="list-inline-item">{{ substr(strip_tags($postFore->created_at),0,10) }}</li>
+                                                <li class="list-inline-item">{{ $postFore->created_at->format('M d, Y') }}</li>
                                             </ul>
                                         </div>
                                     </div>
@@ -153,7 +153,7 @@
                                                     {{$webDesign->userInfo->name}}
                                                 </a>
                                             </li>
-                                            <li class="list-inline-item">{{ substr(strip_tags($postFore->created_at),0,10) }}</li>
+                                            <li class="list-inline-item">{{ $webDesign->created_at->format('M d, Y') }}</li>
                                         </ul>
                                         <h5 class="post-title mb-3 mt-3">
                                             <a href="{{route('detailspost', $webDesign->slug)}}">{{$webDesign->name}}</a>
@@ -178,7 +178,7 @@
                                                 <a href="{{route('detailspost', $webDesTo->slug)}}">{{$webDesTo->name}}</a>
                                             </h6>
                                             <ul class="meta list-inline mt-1 mb-0">
-                                                <li class="list-inline-item">{{ substr(strip_tags($webDesTo->created_at),0,10) }}</li>
+                                                <li class="list-inline-item">{{ $webDesTo->created_at->format('M d, Y') }}</li>
                                             </ul>
                                         </div>
                                     </div>
@@ -205,7 +205,7 @@
                                                     {{$webDesign->userInfo->name}}
                                                 </a>
                                             </li>
-                                            <li class="list-inline-item">{{ substr(strip_tags($postFore->created_at),0,10) }}</li>
+                                            <li class="list-inline-item">{{ $webDesign->created_at->format('M d, Y') }}</li>
                                         </ul>
                                         <h5 class="post-title mb-3 mt-3">
                                             <a href="{{route('detailspost', $webDesign->slug)}}">{{$webDesign->name}}</a>
@@ -230,7 +230,7 @@
                                                 <a href="{{route('detailspost', $webDesTo->slug)}}">{{$webDesTo->name}}</a>
                                             </h6>
                                             <ul class="meta list-inline mt-1 mb-0">
-                                                <li class="list-inline-item">{{ substr(strip_tags($webDesTo->created_at),0,10) }}</li>
+                                                <li class="list-inline-item">{{ $webDesTo->created_at->format('M d, Y') }}</li>
                                             </ul>
                                         </div>
                                     </div>
@@ -268,7 +268,7 @@
                                         <li class="list-inline-item">
                                             <a href="#">{{$posts->userInfo->name}}</a>
                                         </li>
-                                        <li class="list-inline-item">{{ substr(strip_tags($posts->created_at),0,10) }}</li>
+                                        <li class="list-inline-item">{{ $posts->created_at->format('M d, Y') }}</li>
                                     </ul>
                                 </div>
                                 <a href="#">
@@ -315,7 +315,7 @@
                                                 <li class="list-inline-item">
                                                     <a href="#">{{$posts->category->name}}</a>
                                                 </li>
-                                                <li class="list-inline-item">{{ substr(strip_tags($posts->created_at),0,10) }}</li>
+                                                <li class="list-inline-item">{{ $postFore->created_at->format('M d, Y') }}</li>
                                             </ul>
                                             <h5 class="post-tile">
                                                 <a href="{{route('detailspost', $posts->slug)}}">

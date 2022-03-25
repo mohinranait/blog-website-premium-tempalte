@@ -26,7 +26,7 @@
                                     <img src="{{asset('backend/img/user/'.$details->userInfo->profile)}}" style="width:45px ; height:45px; border-radius:50% ; margin-right:15px" alt="">
                                     <div>
                                         <p class='auth-name'><strong>Author</strong>  : {{$details->userInfo->name}}</p>
-                                        <p> <strong>Update Time </strong> : {{ substr(strip_tags($details->created_at),0,10) }}</p>
+                                        <p> <strong>Update Time </strong> : {{ $details->created_at->format('M d, Y') }}</p>
                                     </div>
                                 </div>
                                 <img src="{{asset('backend/img/blogpost/'. $details->thumnail)}}" alt="">
